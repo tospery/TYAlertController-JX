@@ -137,6 +137,9 @@
     _buttonDefaultBgColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1];
     _buttonCancelBgColor = [UIColor colorWithRed:127/255.0 green:140/255.0 blue:141/255.0 alpha:1];
     _buttonDestructiveBgColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
+    _buttonDefaultTitleColor = UIColor.blackColor;
+    _buttonCancelTitleColor = UIColor.blackColor;
+    _buttonDestructiveTitleColor = UIColor.blackColor;
     
     _textFieldHeight = kTextFieldHeight;
     _textFieldEdge = kTextFieldEdge;
@@ -160,6 +163,21 @@
             return _buttonCancelBgColor;
         case TYAlertActionStyleDestructive:
             return _buttonDestructiveBgColor;
+            
+        default:
+            return nil;
+    }
+}
+
+- (UIColor *)buttonTitleColorWithStyle:(TYAlertActionStyle)style
+{
+    switch (style) {
+        case TYAlertActionStyleDefault:
+            return _buttonDefaultTitleColor;
+        case TYAlertActionStyleCancel:
+            return _buttonCancelTitleColor;
+        case TYAlertActionStyleDestructive:
+            return _buttonDestructiveTitleColor;
             
         default:
             return nil;
@@ -216,6 +234,7 @@
     button.clipsToBounds = YES;
     button.layer.cornerRadius = _buttonCornerRadius;
     [button setTitle:action.title forState:UIControlStateNormal];
+    [button setTitleColor:[self buttonTitleColorWithStyle:action.style] forState:UIControlStateNormal];
     button.titleLabel.font = _buttonFont;
     button.backgroundColor = [self buttonBgColorWithStyle:action.style];
     button.enabled = action.enabled;

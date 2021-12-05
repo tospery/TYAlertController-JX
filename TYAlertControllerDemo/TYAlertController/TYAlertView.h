@@ -53,6 +53,9 @@ typedef NS_ENUM(NSUInteger, TYAlertActionStyle) {
 @property (nonatomic, strong) UIColor *buttonDefaultBgColor;
 @property (nonatomic, strong) UIColor *buttonCancelBgColor;
 @property (nonatomic, strong) UIColor *buttonDestructiveBgColor;
+@property (nonatomic, strong) UIColor *buttonDefaultTitleColor;
+@property (nonatomic, strong) UIColor *buttonCancelTitleColor;
+@property (nonatomic, strong) UIColor *buttonDestructiveTitleColor;
 
 // textField custom
 @property (nonatomic, strong) UIColor *textFieldBorderColor;
